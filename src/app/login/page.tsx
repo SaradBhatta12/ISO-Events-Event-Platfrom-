@@ -7,27 +7,34 @@ import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios";
-
 const page = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Call API or perform registration logic here
+    try {
+      setLoading(true);
+      // Call API or perform registration logic here
 
-    let res = await axios.post(`/api/auth/login`, {
-      username,
-      password,
-    });
-    if (!res.data.success == true) {
-      router.push("login");
-      toast.success(res.data.message);
-    } else {
-      router.push("/");
-      toast.success(res.data.message);
+      let res = await axios.post(`/api/auth/login`, {
+        username,
+        password,
+      });
+      if (!res.data.success == true) {
+        router.push("login");
+        toast.success(res.data.message);
+      } else {
+        router.push("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log("internal server error ", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -98,8 +105,11 @@ const page = () => {
           </button>
         </div>
 
-        <button className=" w-full text-white bg-blue-600 p-2 e-950  rounded flex items-center justify-center gap-3">
-          <FaGoogle /> Continue With Google{" "}
+        <button
+          type="submit"
+          className=" w-full text-white bg-blue-600 p-2 e-950  rounded flex items-center justify-center gap-3"
+        >
+          <FaGoogle /> Signin with Google{" "}
         </button>
         <p className="text-gray-600 text-sm p-3">
           Have not accoutn yet?{" "}

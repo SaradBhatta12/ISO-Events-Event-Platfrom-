@@ -14,7 +14,7 @@ body,
 html {
   margin: 0%;
   padding: 0%;
-  background-color: rgb(48, 5, 5);
+  background-color: rgb(0, 0, 0);
 }
 
 
@@ -26,7 +26,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4d4646;
+  background: #cec3c3;
   border-radius: 10px;
 
 }
@@ -34,4 +34,59 @@ html {
 ::-webkit-scrollbar-track {
   background: transparent;
 
+}
+
+#logo-text {
+  font-family: cursive;
+}
+
+
+
+
+.loading-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+}
+
+.rect {
+  width: 10px;
+  height: 100%;
+  background-color: #3498db;
+  animation: loading 1.2s infinite ease-in-out;
+}
+
+.rect1 {
+  animation-delay: -1.2s;
+}
+
+.rect2 {
+  animation-delay: -1.0s;
+}
+
+.rect3 {
+  animation-delay: -0.8s;
+}
+
+.rect4 {
+  animation-delay: -0.6s;
+}
+
+.rect5 {
+  animation-delay: -0.4s;
+}
+
+@keyframes loading {
+
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+  }
+
+  20% {
+    transform: scaleY(1.0);
+  }
 }

@@ -8,10 +8,28 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "custom-bg": "black",
+        "form-bg": "#1a1a1a",
+        "input-bg": "#333",
+        "input-border": "#444",
+        "text-primary": "#fff",
+        "text-secondary": "#aaa",
+        "button-bg": "#ff6600",
+      },
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      screens: {
+        xs: { max: "475px" }, // Extra small devices
+        sm: { max: "640px" }, // Small devices
+        md: { max: "768px" }, // Medium devices
+        lg: { max: "1024px" }, // Large devices
+        xl: { max: "1280px" }, // Extra large devices
+        "2xl": { max: "1536px" }, // 2X large devices
       },
     },
   },
